@@ -1,8 +1,13 @@
 FROM ubuntu:latest
 
-RUN apt update ; apt full-upgrade -y ; apt install fail2ban wipe -y && adduser --disabled-password --home /home/container container
+# Create user
+RUN adduser --disabled-password --home /home/container container
 
-RUN apt install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6 zlib1g
+# Install preferred packages
+RUN apt update ; apt full-upgrade -y ; apt install fail2ban wipe -y
+
+# Install packages for .NET
+RUN apt install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu66 libssl1.1 libstdc++6 zlib1g
 
 USER container
 ENV USER=container HOME=/home/container

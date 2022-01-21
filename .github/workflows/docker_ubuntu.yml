@@ -28,6 +28,10 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
-      # Runs a single command using the runners shell
+      # Builds Ubuntu Docker
       - name: Build ubuntu
         run: docker build ./ubuntu -t developerxofficial/ubuntu
+        
+      # Pushes Ubuntu Docker
+      - name: Push Ubuntu
+        run: docker push developerxofficial/ubuntu

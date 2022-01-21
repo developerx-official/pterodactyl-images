@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt update ; apt full-upgrade -y ; apt install fail2ban wipe libgssapi -y && adduser --disabled-password --home /home/container container
+RUN apt update ; apt full-upgrade -y ; apt install fail2ban wipe libgssapi-perl -y && adduser --disabled-password --home /home/container container
 
 USER container
 ENV USER=container HOME=/home/container
